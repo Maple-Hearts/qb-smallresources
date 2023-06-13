@@ -66,7 +66,7 @@ RegisterNetEvent('qb-log:server:CreateLog', function(name, title, color, message
             },
             ['description'] = message,
             ['author'] = {
-                ['name'] = 'QBCore Logs',
+                ['name'] = 'Whitelisted Logs',
                 ['icon_url'] = 'https://media.discordapp.net/attachments/870094209783308299/870104331142189126/Logo_-_Display_Picture_-_Stylized_-_Red.png?width=670&height=670',
             },
         }
