@@ -89,9 +89,9 @@ QBCore.Commands.Add("resetarmor", "Resets Vest (Police Only)", {}, false, functi
     end
 end)
 
-QBCore.Functions.CreateUseableItem("binoculars", function(source)
-    TriggerClientEvent("binoculars:Toggle", source)
-end)
+-- QBCore.Functions.CreateUseableItem("binoculars", function(source)
+--     TriggerClientEvent("binoculars:Toggle", source)
+-- end)
 
 QBCore.Functions.CreateUseableItem("parachute", function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
