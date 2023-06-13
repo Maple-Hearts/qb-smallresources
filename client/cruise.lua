@@ -41,6 +41,8 @@ local function TriggerCruiseControl(veh)
         if speed > 0 and GetVehicleCurrentGear(veh) > 0 then
             speed = GetEntitySpeed(veh)
             local TransformedSpeed = TransformToSpeed(speed) -- Comment me for mp/h
+            local delay = math.random(1000, 5000) -- add a random delay between 1-5 seconds
+            Wait(delay)
             TriggerEvent('seatbelt:client:ToggleCruise')
             QBCore.Functions.Notify(Lang:t('cruise.activated') .. TransformedSpeed .." "..Config.Cruise) -- Comment me for mp/h
             CreateThread(function()
