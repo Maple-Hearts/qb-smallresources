@@ -1,5 +1,6 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 local VehicleNitrous = {}
+local start = os.time()
 
 RegisterNetEvent('tackle:server:TacklePlayer', function(playerId)
     TriggerClientEvent("tackle:client:GetTackled", playerId)
@@ -71,4 +72,24 @@ QBCore.Functions.CreateCallback('smallresources:server:GetCurrentPlayers', funct
         TotalPlayers += 1
     end
     cb(TotalPlayers)
+end)
+
+
+CreateThread(function()
+    while true do
+        Wait(1000 * 60)
+
+        local uptimeString = ""
+        local uptime = os.difftime(os.time(), start)
+        local hrs = math.floor(uptime / 3600)
+        local mins = math.floor((uptime - (hrs * 3600)) / 60)
+
+        if hrs > 0 then
+            uptimeString = string.format("%d:%02d", hrs, mins)
+        else
+            uptimeString = string.format("%d minutes", mins)
+        end
+
+        SetConvarServerInfo('Uptime', uptimeString)
+    end
 end)
