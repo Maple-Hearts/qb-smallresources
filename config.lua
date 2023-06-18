@@ -80,14 +80,29 @@ Config.Stun = {
     max = 7000
 }
 
+Config.CrouchKeybindEnabled = true -- If the crouching should have a keybind
+Config.CrouchKeybind = 'LCONTROL' -- The default keybind for crouching
+Config.CrouchOverride = true -- If true and the keybind for crouch is left control, then disable stealth mode and go straight to crouch. If false, and the keybind for crouch is left control then only enter crouch if we are already in stealth mode.
+Config.CrouchKeypressTimer = 3000 -- If CrouchOverride is false and keybind for crouch is left control, then this is the max time in ms from last key press that the player can enter crouch. If is has been more then the specified time, then the player will not enter crouch but stop exit the stealth mode.
+
+Config.CrawlKeybindEnabled = true -- If the crawling should have a keybind
+Config.CrawlKeybind = 'RCONTROL' -- The default keybind for crawling
+
+Config.Localization = {
+    ['crouch_keymapping'] = "Crouch",
+    ['crouch_chat_suggestion'] = "Crouch",
+    ['crawl_keymapping'] = "Crawl",
+    ['crawl_chat_suggestion'] = "Crawl"
+}
+Config.RemovePistolWhipping = true
 Config.Cruise = 'mp/h'
-Config.IdleCamera = true
+Config.IdleCamera = false
 Config.disableHandsupControls = {24, 25, 47, 58, 59, 63, 64, 71, 72, 75, 140, 141, 142, 143, 257, 263, 264}
 Config.DisableAmbience = false -- Disabled distance sirens, distance car alarms, etc
 Config.HarnessUses = 20
 Config.DamageNeeded = 100.0 -- vehiclepush 0-1000
 Config.EnableProne = false -- prone isnt recomended at this time
-Config.MapText = "Server Name" -- This is the name / text shown above the map
+Config.MapText = "New Leaf" -- This is the name / text shown above the map
 
 Config.Disable = {
     disableHudComponents = {1, 2, 3, 4, 7, 9, 13, 14, 19, 20, 21, 22}, -- Hud Components: https://docs.fivem.net/natives/?_0x6806C51AD12B83B8
