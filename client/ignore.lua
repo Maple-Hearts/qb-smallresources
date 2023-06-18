@@ -54,16 +54,11 @@ if Config.Stun.active then
 end
 
 CreateThread(function()
-	for dispatchService, enabled in pairs(Config.DispatchServices) do
-		EnableDispatchService(dispatchService, enabled)
+	for i = 1, 15 do
+		EnableDispatchService(i, false)
 	end
 
-	local wantedLevel = 0
-	if Config.EnableWantedLevel then
-		wantedLevel = 5
-	end
-
-	SetMaxWantedLevel(wantedLevel)
+	SetMaxWantedLevel(0)
 end)
 
 if Config.IdleCamera then --Disable Idle Cinamatic Cam
@@ -77,29 +72,27 @@ if Config.IdleCamera then --Disable Idle Cinamatic Cam
 end
 
 RegisterNetEvent('QBCore:Client:DrawWeapon', function()
-    local sleep
-    while true do
-        sleep = 500
-        local ped = PlayerPedId()
-        local weapon = GetSelectedPedWeapon(ped)
-        if weapon ~= `WEAPON_UNARMED` then
-            if IsPedArmed(ped, 6) then
-                sleep = 0
-                DisableControlAction(1, 140, true)
-                DisableControlAction(1, 141, true)
-                DisableControlAction(1, 142, true)
-            end
+	local sleep
+	while true do
+		sleep = 500
+		local weapon = GetSelectedPedWeapon(cache.ped)
+		if weapon ~= `WEAPON_UNARMED` then
+			if IsPedArmed(cache.ped, 6) then
+				sleep = 0
+				DisableControlAction(1, 140, true)
+				DisableControlAction(1, 141, true)
+				DisableControlAction(1, 142, true)
+			end
 
-            if weapon == `WEAPON_FIREEXTINGUISHER` or weapon == `WEAPON_PETROLCAN` then
-                if IsPedShooting(ped) then
-                    SetPedInfiniteAmmo(ped, true, weapon)
-                end
-            end
-        else
-            break
-        end
-        Wait(sleep)
-    end
+			if weapon == `WEAPON_FIREEXTINGUISHER` or weapon == `WEAPON_PETROLCAN` then
+				if IsPedShooting(cache.ped) then
+					SetPedInfiniteAmmo(cache.ped, true, `WEAPON_FIREEXTINGUISHER`)
+					SetPedInfiniteAmmo(cache.ped, true, `WEAPON_PETROLCAN`)
+				end
+			end
+		end
+		Wait(sleep)
+	end
 end)
 
 CreateThread(function()
